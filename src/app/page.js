@@ -1,95 +1,66 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import styles from './page.module.scss';
+import Image from 'next/image';
+import { FaCalendarDays, FaLocationDot, FaTicket, FaCalendarCheck } from 'react-icons/fa6';
+
+//Components
+import Countdown from '@/components/Countdown';
+import MainGuest from '@/components/MainGuest';
+import Speakers from '@/components/Speakers';
+import Agenda from '@/components/Agenda';
+import Tickets from '@/components/Tickets';
+import Gallery from '@/components/Gallery';
+import Contact from '@/components/Contact';
+import Sponsors from '@/components/Sponsors';
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+	return (
+		<>
+			<header className={styles.header}>
+				<div className={styles.header__bgc}></div>
+				<Image className={styles.header__background} src='/background_max.webp' alt='' fill priority></Image>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+				<div className={styles.header__content}>
+					<div className={styles.content__info}>
+						<p className={styles.info__date}>
+							<FaCalendarDays /> <time dateTime='2025-09-17'>17 Września 2025</time>
+						</p>
+
+						<p className={styles.info__location}>
+							<FaLocationDot /> Hotel Villa Verde, Zawiercie
+						</p>
+					</div>
+
+					<h1>
+						BIG BUSINESS MEETS SCIENCE <span className={styles.title__color}>5</span>
+					</h1>
+
+					<p className={styles.content__desc}>
+						Dołącz do wyjątkowej konferencji łączącej świat biznesu i nauki – inspirujące prelekcje, networking i wiedza na najwyższym poziomie.
+					</p>
+
+					<div className={styles.content__buttons}>
+						<a href='#' className={styles.buttons__ticket}>
+							<FaTicket /> Kup Bilet
+						</a>
+
+						<a href='#' className={styles.buttons__agenda}>
+							<FaCalendarCheck /> Zobacz Agendę
+						</a>
+					</div>
+				</div>
+			</header>
+
+			<Countdown />
+
+			<main className={styles.main}>
+				<MainGuest />
+				<Speakers />
+				<Agenda />
+				<Tickets />
+				<Gallery />
+				<Sponsors />
+				<Contact />
+			</main>
+		</>
+	);
 }

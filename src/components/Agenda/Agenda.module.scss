@@ -1,0 +1,185 @@
+@use '../../styles/colors' as *;
+@use '../../styles/mixins' as *;
+
+.agenda {
+	padding: 80px 20px;
+
+	&__container {
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 20px 40px;
+		border-radius: 20px;
+
+		@include darkBlock;
+	}
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding: 20px 0;
+		border-bottom: 1px solid rgba($text, 0.1);
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		@media (min-width: 768px) {
+			flex-direction: row;
+			gap: 30px;
+		}
+	}
+
+	&__time {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		color: $secondary;
+		font-weight: 700;
+		font-size: 1.1rem;
+		flex-shrink: 0;
+
+		.clock__icon {
+			font-size: 1.2rem;
+		}
+
+		@media (min-width: 768px) {
+			width: 180px;
+		}
+	}
+
+	&__content {
+		flex: 1;
+
+		h3 {
+			font-size: 1.3rem;
+			font-weight: 700;
+			color: $text;
+			margin-bottom: 10px;
+		}
+
+		p {
+			color: $text-alternate;
+			font-size: 0.95rem;
+			line-height: 1.6;
+		}
+	}
+}
+
+/* Media queries dla responsywności */
+@media (min-width: 576px) {
+	.agenda {
+		&__time {
+			font-size: 1.15rem;
+
+			.clock__icon {
+				font-size: 1.25rem;
+			}
+		}
+
+		&__content {
+			h3 {
+				font-size: 1.4rem;
+			}
+
+			p {
+				font-size: 1rem;
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.agenda {
+		padding: 100px 30px;
+
+		&__container {
+			padding: 20px 50px;
+		}
+
+		&__item {
+			padding: 25px 0;
+		}
+
+		&__time {
+			font-size: 1.2rem;
+
+			.clock__icon {
+				font-size: 1.3rem;
+			}
+		}
+
+		&__content {
+			h3 {
+				font-size: 1.5rem;
+			}
+
+			p {
+				font-size: 1.05rem;
+				line-height: 1.7;
+			}
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	.agenda {
+		padding: 120px 40px;
+
+		&__container {
+			padding: 30px 60px;
+		}
+
+		&__item {
+			padding: 30px 0;
+		}
+
+		&__time {
+			font-size: 1.25rem;
+
+			.clock__icon {
+				font-size: 1.35rem;
+			}
+		}
+
+		&__content {
+			h3 {
+				font-size: 1.6rem;
+				margin-bottom: 12px;
+			}
+
+			p {
+				font-size: 1.1rem;
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.agenda {
+		padding: 140px 20px;
+
+		&__container {
+			padding: 30px 70px;
+		}
+
+		&__time {
+			font-size: 1.3rem;
+
+			.clock__icon {
+				font-size: 1.4rem;
+			}
+		}
+
+		&__content {
+			h3 {
+				font-size: 1.7rem;
+			}
+
+			p {
+				font-size: 1.15rem;
+				line-height: 1.8;
+			}
+		}
+	}
+}

@@ -1,0 +1,11 @@
+@use './colors' as *;
+@use './reset' as *;
+
+body {
+	background-color: var(--background);
+	font-family: 'Segoe UI', sans-serif;
+}
+
+a {
+	color: var(--text);
+}

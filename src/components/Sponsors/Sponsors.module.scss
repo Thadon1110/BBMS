@@ -1,0 +1,67 @@
+@use '../../styles/colors' as *;
+
+.sponsors {
+	padding: 80px 20px;
+
+	&__container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: 40px;
+		max-width: 1200px;
+		margin: 30px auto 0;
+	}
+}
+
+.sponsor {
+	&__item {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 15px;
+		background-color: rgba(255, 255, 255, 0.9);
+		border-radius: 10px;
+		transition: transform 0.3s, box-shadow 0.3s;
+
+		&:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+		}
+	}
+
+	&__logo {
+		max-width: 100%;
+		height: auto;
+		object-fit: contain;
+	}
+}
+
+/* Media queries dla responsywności */
+@media (min-width: 576px) {
+	.sponsor {
+		&__item {
+			padding: 20px;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.sponsors {
+		&__container {
+			padding: 40px;
+			gap: 50px;
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	.sponsors {
+		padding: 120px 20px;
+
+		&__container {
+			padding: 50px;
+			gap: 60px;
+		}
+	}
+}
