@@ -51,14 +51,14 @@ export default function Contact() {
 					<ul className={styles.info__list}>
 						<li className={styles.info__item}>
 							<FaEnvelope className={styles.info__icon} />
-							<a href='mailto:123@123.pl' className={styles.info__link}>
-								123@123.pl
+							<a href='mailto:mfuz@trawialnia.eu' className={styles.info__link}>
+								mfuz@trawialnia.eu
 							</a>
 						</li>
 						<li className={styles.info__item}>
 							<FaPhone className={styles.info__icon} />
-							<a href='tel:+48123123123' className={styles.info__link}>
-								+48 123 123 123
+							<a href='tel:+48668102874' className={styles.info__link}>
+								+48 668 102 874
 							</a>
 						</li>
 						<li className={styles.info__item}>

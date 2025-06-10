@@ -27,7 +27,7 @@ const galleryItems = [
 	},
 	{
 		id: 4,
-		title: 'Big Business Meets Science 4 - Rafael Badziag o wydarzeniu',
+		title: 'Big Business Meets Science 1 - Rafael Badziag o wydarzeniu',
 		description: 'Rafael Badziag na otwarciu hali trawialnia.eu oraz konferencji BIG BUSINESS MEETS SCIENCE',
 		videoId: 'r6kGJkQjQQY',
 	},
@@ -45,7 +45,7 @@ const galleryItems = [
 	},
 	{
 		id: 2,
-		title: 'Big Business Meets Science 4 - Podsumowanie otwarcia hali trawialnia.eu',
+		title: 'Big Business Meets Science 1 - Podsumowanie otwarcia hali trawialnia.eu',
 		description: 'Big Business Meets Science - podsumowanie otwarcia hali trawialnia.eu (20.02.2020 r.)',
 		videoId: 'ZZ2XPgtECg4',
 	},

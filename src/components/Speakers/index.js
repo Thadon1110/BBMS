@@ -6,35 +6,35 @@ import { FaLinkedinIn } from 'react-icons/fa6';
 const speakersData = [
 	{
 		id: 1,
-		name: 'Dr. Hab. Inż. Zbigniew Brytan',
-		role: 'Wykładowca na Politechnice Śląskiej',
+		name: 'dr hab. inż. Zbigniew Brytan',
+		role: 'Profesor uczelni na Politechnice Śląskiej',
 		description:
 			'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus..',
-		image: '/placeholder.png',
-		linkedin: 'https://linkedin.com/',
+		image: '/speakers/zbigniew_brytan.jpg',
+		linkedin: 'https://www.linkedin.com/in/zbigniew-brytan-0b09b416/',
 	},
 	{
 		id: 2,
-		name: 'Dr. Hab. Inż. Zbigniew Brytan',
-		role: 'Wykładowca na Politechnice Śląskiej',
+		name: 'prof. dr hab. inż. Juliusz Orlikowski',
+		role: 'Profesor na Politechnice Gdańskiej',
 		description:
 			'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus..',
-		image: '/placeholder.png',
+		image: '/speakers/juliusz_orlikowski.jpg',
 		linkedin: 'https://linkedin.com/',
 	},
 	{
 		id: 3,
-		name: 'Dr. Hab. Inż. Zbigniew Brytan',
-		role: 'Wykładowca na Politechnice Śląskiej',
+		name: 'dr hab. inż. Stefan Krakowiak',
+		role: 'Profesor uczelni na Politechnice Gdańskiej',
 		description:
 			'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus..',
-		image: '/placeholder.png',
+		image: '/speakers/stefan_krakowiak.jpg',
 		linkedin: 'https://linkedin.com/',
 	},
 	{
 		id: 4,
-		name: 'Dr. Hab. Inż. Zbigniew Brytan',
-		role: 'Wykładowca na Politechnice Śląskiej',
+		name: 'Andrzej Michalski-Stępkowski',
+		role: 'Prezes Stowarzyszenia Stal Nierdzewna',
 		description:
 			'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus..',
 		image: '/placeholder.png',
@@ -72,8 +72,8 @@ export default function Speakers() {
 							<Image
 								src={speaker.image}
 								alt={speaker.name}
-								width={200}
-								height={200}
+								width={500}
+								height={500}
 								placeholder='blur'
 								blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=='
 							/>
@@ -90,9 +90,9 @@ export default function Speakers() {
 								<a href={speaker.linkedin} className={styles.linkedin__link} target='_blank' rel='noopener noreferrer'>
 									<FaLinkedinIn />
 								</a>
-								<a href={speaker.linkedin} className={styles.linkedin__link} target='_blank' rel='noopener noreferrer'>
+								{/* <a href={speaker.linkedin} className={styles.linkedin__link} target='_blank' rel='noopener noreferrer'>
 									<FaLinkedinIn />
-								</a>
+								</a> */}
 							</div>
 						</div>
 					</div>
