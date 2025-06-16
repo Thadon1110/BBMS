@@ -1,7 +1,7 @@
 @use '../../styles/colors' as *;
 @use '../../styles/mixins' as *;
 
-.star {
+.vocalist {
 	padding: 60px 20px;
 
 	&__card {
@@ -43,6 +43,15 @@
 		}
 	}
 
+	&__role {
+		color: $secondary !important;
+		font-weight: 600 !important;
+		font-size: 1.1rem !important;
+		margin-bottom: 0.5rem !important;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
+
 	&__tag {
 		position: relative;
 		display: inline-flex;
@@ -79,14 +88,32 @@
 	}
 
 	&__image {
+		position: relative;
 		flex-shrink: 0;
 
 		img {
 			max-width: 100%;
 			height: auto;
-			border-radius: 8px;
+			border-radius: 12px;
 			display: block;
 		}
+	}
+
+	&__music_icon {
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		background-color: $secondary;
+		color: $text;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.2rem;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+		animation: musicPulse 2s infinite;
 	}
 }
 
@@ -112,12 +139,26 @@
 	}
 }
 
+@keyframes musicPulse {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+}
+
 @media (min-width: 576px) {
-	.star {
+	.vocalist {
 		&__content {
 			p {
 				font-size: 1.05rem;
 			}
+		}
+
+		&__role {
+			font-size: 1.15rem !important;
 		}
 
 		&__tag {
@@ -127,7 +168,7 @@
 }
 
 @media (min-width: 768px) {
-	.star {
+	.vocalist {
 		&__card {
 			flex-direction: row;
 			align-items: stretch;
@@ -149,7 +190,17 @@
 			}
 		}
 
+		&__role {
+			font-size: 1.2rem !important;
+		}
+
 		&__tag {
+			font-size: 1.3rem;
+		}
+
+		&__music_icon {
+			width: 45px;
+			height: 45px;
 			font-size: 1.3rem;
 		}
 	}
@@ -164,7 +215,7 @@
 }
 
 @media (min-width: 992px) {
-	.star {
+	.vocalist {
 		padding: 80px 20px;
 
 		&__card {
@@ -183,6 +234,10 @@
 			}
 		}
 
+		&__role {
+			font-size: 1.25rem !important;
+		}
+
 		&__tag {
 			font-size: 1.4rem;
 			letter-spacing: 1.8px;
@@ -190,6 +245,12 @@
 			&::after {
 				height: 4px;
 			}
+		}
+
+		&__music_icon {
+			width: 48px;
+			height: 48px;
+			font-size: 1.4rem;
 		}
 	}
 
@@ -203,7 +264,7 @@
 }
 
 @media (min-width: 1200px) {
-	.star {
+	.vocalist {
 		padding: 100px 20px;
 
 		&__card {
@@ -223,14 +284,24 @@
 			}
 		}
 
+		&__role {
+			font-size: 1.3rem !important;
+		}
+
 		&__tag {
 			font-size: 1.5rem;
 			letter-spacing: 2px;
 		}
 
+		&__music_icon {
+			width: 50px;
+			height: 50px;
+			font-size: 1.5rem;
+		}
+
 		&__image {
 			img {
-				border-radius: 12px;
+				border-radius: 15px;
 			}
 		}
 	}

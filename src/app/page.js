@@ -6,6 +6,7 @@ import { FaCalendarDays, FaLocationDot, FaTicket, FaCalendarCheck } from 'react-
 import Countdown from '@/components/Countdown';
 import MainGuest from '@/components/MainGuest';
 import Speakers from '@/components/Speakers';
+import Vocalist from '@/components/Vocalist';
 import Agenda from '@/components/Agenda';
 import Tickets from '@/components/Tickets';
 import Gallery from '@/components/Gallery';
@@ -55,6 +56,7 @@ export default function Home() {
 			<main className={styles.main}>
 				<MainGuest />
 				<Speakers />
+				<Vocalist />
 				<Agenda />
 				<Tickets />
 				<Gallery />

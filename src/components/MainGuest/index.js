@@ -1,7 +1,7 @@
 import styles from './MainGuest.module.scss';
 import SectionHeader from '../SectionHeader';
 import Image from 'next/image';
-import { FaCalendarPlus } from 'react-icons/fa6';
+import { FaInstagram, FaWikipediaW, FaLinkedinIn } from 'react-icons/fa6';
 
 export default function MainGuest() {
 	return (
@@ -13,27 +13,41 @@ export default function MainGuest() {
 					<span className={styles.star__tag}>Główna Gwiazda</span>
 					<h3>Beata Tadla</h3>
 					<p>
-						loremDolore minim ullamco qui ex fugiat laborum. Do dolor laboris nisi ullamco. Et aliqua qui ipsum eiusmod anim laboris laboris pariatur
-						pariatur ullamco. Consequat officia exercitation culpa irure nulla tempor ullamco non elit dolore ea esse proident. Duis Lorem Lorem nisi
-						cupidatat culpa sunt labore duis in veniam.
-						<br />
-						<br />
-						Mollit ut exercitation cupidatat dolore aliquip est ullamco ipsum est excepteur proident eu. Do ea exercitation cillum dolor exercitation.
-						Sint ut amet ullamco dolor laboris ut veniam aute. Aute amet ipsum dolor ea ad dolore consectetur ut. Mollit veniam ea elit incididunt
-						consequat mollit anim sit. Exercitation est incididunt aliquip id cupidatat laboris ea exercitation aliquip ullamco magna laborum ullamco.
-						Et aliqua ex qui aute proident anim minim consequat ipsum reprehenderit laborum veniam.
-						<br />
-						<br />
-						Id velit id duis sit occaecat. Aute cillum eiusmod nostrud amet ea qui elit ipsum reprehenderit commodo irure officia. Pariatur cupidatat
-						consequat velit ex commodo et do sint ut id. Nisi irure velit laboris deserunt in velit deserunt sit dolore sint sunt nostrud sunt. Dolor
-						quis non sint reprehenderit pariatur est.
+						Beata Tadla to jedna z najbardziej rozpoznawalnych dziennikarek i prezenterek telewizyjnych w Polsce. Od lat związana z mediami, zdobywała
+						doświadczenie w największych stacjach informacyjnych, prowadząc programy publicystyczne, informacyjne oraz wywiady z najważniejszymi
+						postaciami świata polityki, nauki i biznesu.
 					</p>
-					{/* <a className={styles.star__calendar} href='#'>
-						<FaCalendarPlus /> Dodaj do kalendarza
-					</a> */}
+					<p>
+						Znana z charyzmy, profesjonalizmu i niezwykłej umiejętności budowania relacji, od lat inspiruje kolejne pokolenia dziennikarzy i liderów
+						opinii. Podczas konferencji BBMS5 opowie o roli komunikacji, wiarygodności i odwagi w świecie dynamicznych zmian
+						społeczno-technologicznych.
+					</p>
+					<p>
+						Jej wystąpienie będzie nie tylko spotkaniem z wieloletnim doświadczeniem medialnym, ale też osobistą refleksją nad tym, co w dzisiejszym
+						świecie najbardziej przyciąga uwagę odbiorców i buduje autentyczne relacje.
+					</p>
+
+					<div className={styles.star__social}>
+						<a href='https://www.linkedin.com/in/beata-tadla-1b51a1119/' className={styles.social__link} target='_blank' rel='noopener noreferrer'>
+							<FaLinkedinIn />
+						</a>
+						<a href='https://www.instagram.com/beatatadla/' className={styles.social__link} target='_blank' rel='noopener noreferrer'>
+							<FaInstagram />
+						</a>
+						<a href='https://en.wikipedia.org/wiki/Beata_Tadla' className={styles.social__link} target='_blank' rel='noopener noreferrer'>
+							<FaWikipediaW />
+						</a>
+					</div>
 				</div>
 				<div className={styles.star__image}>
-					<Image src='https://placehold.co/320x320.png?text=Beata+Tadla&font=montserrat' alt='Beata Tadla' width={320} height={320} />
+					<Image
+						src='/main_star.jpg'
+						alt='Beata Tadla'
+						width={400}
+						height={400}
+						placeholder='blur'
+						blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=='
+					/>
 				</div>
 			</div>
 		</section>
