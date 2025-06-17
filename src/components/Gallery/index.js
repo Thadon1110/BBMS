@@ -26,12 +26,6 @@ const galleryItems = [
 		videoId: 'Uea9K5YJ6bk',
 	},
 	{
-		id: 4,
-		title: 'Big Business Meets Science 1 - Rafael Badziag o wydarzeniu',
-		description: 'Rafael Badziag na otwarciu hali trawialnia.eu oraz konferencji BIG BUSINESS MEETS SCIENCE',
-		videoId: 'r6kGJkQjQQY',
-	},
-	{
 		id: 1,
 		title: 'Big Business Meets Science 4 - Profesor Zbigniew Brytan o korozji',
 		description: 'Profesor Zbigniew Brytan - Jak unikać korozji stali nierdzewnych',
@@ -44,12 +38,6 @@ const galleryItems = [
 		videoId: 'VcZMacOHBVI',
 	},
 	{
-		id: 2,
-		title: 'Big Business Meets Science 1 - Podsumowanie otwarcia hali trawialnia.eu',
-		description: 'Big Business Meets Science - podsumowanie otwarcia hali trawialnia.eu (20.02.2020 r.)',
-		videoId: 'ZZ2XPgtECg4',
-	},
-	{
 		id: 8,
 		title: 'Big Business Meets Science 2 - Maciej Orłoś o Fundacji Serca Kreacja',
 		description: 'Maciej Orłoś o Fundacji Serca Kreacja oraz Big Business Meets Science 2',
@@ -60,6 +48,18 @@ const galleryItems = [
 		title: 'Big Business Meets Science 2 - Rozpoczęcie',
 		description: 'Idzikowska i Orłoś na rozpoczęcie Big Business Meets Science 2 (24.05.2021 r.)',
 		videoId: 'BnIKdprAn3g',
+	},
+	{
+		id: 2,
+		title: 'Big Business Meets Science 1 - Podsumowanie otwarcia hali trawialnia.eu',
+		description: 'Big Business Meets Science - podsumowanie otwarcia hali trawialnia.eu (20.02.2020 r.)',
+		videoId: 'ZZ2XPgtECg4',
+	},
+	{
+		id: 4,
+		title: 'Big Business Meets Science 1 - Rafael Badziag o wydarzeniu',
+		description: 'Rafael Badziag na otwarciu hali trawialnia.eu oraz konferencji BIG BUSINESS MEETS SCIENCE',
+		videoId: 'r6kGJkQjQQY',
 	},
 ];
 

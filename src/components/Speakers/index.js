@@ -58,7 +58,7 @@ const speakersData = [
 		description:
 			'Aperam to światowy lider w produkcji stali nierdzewnej, elektrycznej i specjalistycznej, silnie zorientowany na recykling i zrównoważony rozwój. Posiada zdolność produkcyjną 2,5 mln ton w Europie i Brazylii, w ponad 40 krajach, przy zaangażowaniu ~12 000 pracowników. W 90% wykorzystuje złom, a rozszerza ofertę o ogniwa recyklingowe, bio-charcoal czy rozwój cirkularnej ekonomii.',
 		image: '/speakers/aperam.jpg',
-		linkedin: 'https://www.linkedin.com/company/aperam-poland/?originalSubdomain=pl',
+		linkedin: 'https://www.linkedin.com/company/aperam-poland/',
 		page: 'https://www.aperam.com/pl/',
 		wikipedia: 'https://en.wikipedia.org/wiki/Aperam',
 	},
