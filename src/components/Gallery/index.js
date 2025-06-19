@@ -95,7 +95,7 @@ export default function Gallery() {
 	};
 
 	return (
-		<section className={styles.gallery}>
+		<section className={styles.gallery} id='galeria'>
 			<SectionHeader title='Galeria' subtitle='Zobacz jak było podczas poprzednich edycji' />
 
 			<div className={`${styles.gallery__grid} ${showMore ? styles.gallery__expanded : ''}`}>

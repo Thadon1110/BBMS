@@ -66,7 +66,7 @@ const speakersData = [
 
 export default function Speakers() {
 	return (
-		<section className={styles.speakers}>
+		<section className={styles.speakers} id='prelegenci'>
 			<SectionHeader title='Nasi Prelegenci' subtitle='Poznaj ekspertów, którzy podzielą się swoją wiedzą i doświadczeniem podczas BBMS5' />
 
 			<div className={styles.speakers__grid}>

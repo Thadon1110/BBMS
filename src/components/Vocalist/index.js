@@ -5,7 +5,7 @@ import { FaMusic, FaInstagram, FaLinkedinIn } from 'react-icons/fa6';
 
 export default function Vocalist() {
 	return (
-		<section className={styles.vocalist}>
+		<section className={styles.vocalist} id='glowna-wokalistka'>
 			<SectionHeader title='Oprawa Muzyczna' subtitle='Poznaj artystkę, która zapewni niezapomnianą atmosferę muzyczną podczas konferencji' />
 
 			<div className={styles.vocalist__card}>

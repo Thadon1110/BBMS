@@ -46,9 +46,9 @@ export default function Navbar() {
 			<div className={styles.nav__desktopLinks}>
 				<a href='#prelegenci'>Prelegenci</a>
 				<a href='#agenda'>Agenda</a>
-				<a href='#bilety'>Bilety</a>
 				<a href='#galeria'>Galeria</a>
-				<a href='#sponsors'>Partnerzy</a>
+				<a href='#sponsorzy'>Sponsorzy</a>
+				<a href='#kontakt'>Kontakt</a>
 				<a href='#bilety' className={styles.desktop__ticket}>
 					Kup Bilet
 				</a>
@@ -69,14 +69,14 @@ export default function Navbar() {
 				<a href='#agenda' onClick={() => setMenuOpen(false)}>
 					Agenda
 				</a>
-				<a href='#bilety' onClick={() => setMenuOpen(false)}>
-					Bilety
-				</a>
 				<a href='#galeria' onClick={() => setMenuOpen(false)}>
 					Galeria
 				</a>
-				<a href='#sponsors' onClick={() => setMenuOpen(false)}>
-					Partnerzy
+				<a href='#sponsorzy' onClick={() => setMenuOpen(false)}>
+					Sponsorzy
+				</a>
+				<a href='#kontakt' onClick={() => setMenuOpen(false)}>
+					Kontakt
 				</a>
 				<a href='#bilety' className={styles.mobile__ticket} onClick={() => setMenuOpen(false)}>
 					Kup Bilet

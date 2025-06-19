@@ -10,8 +10,8 @@
 	}
 
 	&__bottom {
-		padding: 20px;
 		position: relative;
+		padding: 20px;
 	}
 
 	&__container {
@@ -23,7 +23,7 @@
 
 		@media (min-width: 768px) {
 			flex-direction: row;
-			justify-content: space-between;
+			justify-content: center;
 			align-items: flex-start;
 		}
 	}
@@ -64,7 +64,7 @@
 		justify-content: center;
 
 		@media (min-width: 768px) {
-			justify-content: flex-start;
+			// justify-content: flex-start;
 		}
 	}
 }
@@ -98,7 +98,9 @@
 		color: $text;
 		border-radius: 50%;
 		font-size: 1.1rem;
-		transition: background-color 0.3s, transform 0.3s;
+		transition:
+			background-color 0.3s,
+			transform 0.3s;
 
 		&:hover {
 			background-color: $secondary;

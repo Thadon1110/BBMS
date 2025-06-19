@@ -90,12 +90,24 @@
 	&__image {
 		position: relative;
 		flex-shrink: 0;
+		border-radius: 12px;
 
 		img {
 			max-width: 100%;
 			height: auto;
 			border-radius: 12px;
 			display: block;
+			transition: transform 0.4s ease;
+			cursor: pointer;
+
+			&:hover {
+				transform: scale(1.05);
+			}
+		}
+
+		&:hover .vocalist__music_icon {
+			transform: scale(1.15);
+			animation: musicPulse 1.5s infinite;
 		}
 	}
 
@@ -113,6 +125,7 @@
 		justify-content: center;
 		font-size: 1.2rem;
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+		transition: transform 0.3s ease;
 		animation: musicPulse 2s infinite;
 	}
 }
@@ -300,6 +313,8 @@
 		}
 
 		&__image {
+			border-radius: 15px;
+
 			img {
 				border-radius: 15px;
 			}

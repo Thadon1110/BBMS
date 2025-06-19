@@ -80,12 +80,19 @@
 
 	&__image {
 		flex-shrink: 0;
+		border-radius: 8px;
 
 		img {
 			max-width: 100%;
 			height: auto;
 			border-radius: 8px;
 			display: block;
+			transition: transform 0.4s ease;
+			cursor: pointer;
+
+			&:hover {
+				transform: scale(1.05);
+			}
 		}
 	}
 }
@@ -229,6 +236,8 @@
 		}
 
 		&__image {
+			border-radius: 12px;
+
 			img {
 				border-radius: 12px;
 			}

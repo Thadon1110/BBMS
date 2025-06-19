@@ -31,7 +31,7 @@
 
 		@media (min-width: 768px) {
 			width: 40%;
-			justify-content: center;
+			justify-content: flex-start;
 		}
 	}
 
@@ -118,7 +118,9 @@
 		color: $text;
 		background-color: $secondary;
 		border-radius: 50%;
-		transition: background-color 0.3s, transform 0.3s;
+		transition:
+			background-color 0.3s,
+			transform 0.3s;
 
 		&:hover {
 			background-color: $secondary-hover;
@@ -169,11 +171,132 @@
 		border: none;
 		border-radius: 8px;
 		cursor: pointer;
-		transition: background-color 0.3s, transform 0.3s;
+		transition:
+			background-color 0.3s,
+			transform 0.3s;
 
 		&:hover {
 			background-color: $secondary-hover;
 			transform: translateY(2px);
+		}
+
+		&:disabled {
+			opacity: 0.7;
+			cursor: not-allowed;
+			transform: none;
+
+			&:hover {
+				background-color: $secondary;
+				transform: none;
+			}
+		}
+	}
+}
+
+// Alert styles
+.alert {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 1000;
+	min-width: 300px;
+	max-width: 400px;
+	border-radius: 12px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+	animation: slideIn 0.3s ease-out;
+
+	&__content {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 16px 20px;
+	}
+
+	&__icon {
+		font-size: 1.2rem;
+		flex-shrink: 0;
+	}
+
+	&__message {
+		flex: 1;
+		font-size: 0.95rem;
+		font-weight: 500;
+	}
+
+	&__close {
+		background: none;
+		border: none;
+		font-size: 1.5rem;
+		cursor: pointer;
+		padding: 0;
+		width: 24px;
+		height: 24px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		transition: background-color 0.2s;
+		color: inherit;
+
+		&:hover {
+			background-color: rgba(255, 255, 255, 0.2);
+		}
+	}
+
+	&--success {
+		background: linear-gradient(135deg, #10b981, #059669);
+		color: white;
+	}
+
+	&--error {
+		background: linear-gradient(135deg, #ef4444, #dc2626);
+		color: white;
+	}
+
+	// Responsywność dla mobile
+	@media (max-width: 576px) {
+		top: 10px;
+		right: 10px;
+		left: 10px;
+		min-width: auto;
+		max-width: none;
+
+		&__content {
+			padding: 14px 16px;
+		}
+
+		&__message {
+			font-size: 0.9rem;
+		}
+	}
+}
+
+@keyframes slideIn {
+	from {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+// Captcha styles
+.captcha {
+	&__label {
+		display: block;
+		margin-bottom: 8px;
+		font-size: 1rem;
+		font-weight: 600;
+		color: $text;
+
+		@media (min-width: 576px) {
+			font-size: 1.1rem;
+		}
+
+		@media (min-width: 992px) {
+			font-size: 1.2rem;
 		}
 	}
 }

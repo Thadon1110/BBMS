@@ -3,16 +3,62 @@
 import styles from './Contact.module.scss';
 import SectionHeader from '../SectionHeader';
 import { FaEnvelope, FaPhone, FaLinkedin, FaYoutube, FaFacebookF } from 'react-icons/fa6';
-import { FaMapMarkerAlt } from 'react-icons/fa';
-import { useState } from 'react';
+import { FaMapMarkerAlt, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
 
 export default function Contact() {
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
-		topic: '',
 		message: '',
+		captcha: '',
 	});
+	const [isLoading, setIsLoading] = useState(false);
+	const [alert, setAlert] = useState(null);
+	const [captchaQuestion, setCaptchaQuestion] = useState({ question: '', answer: 0 });
+
+	// Generuj nowe pytanie captcha
+	const generateCaptcha = () => {
+		const num1 = Math.floor(Math.random() * 10) + 1;
+		const num2 = Math.floor(Math.random() * 10) + 1;
+		const operations = ['+', '-'];
+		const operation = operations[Math.floor(Math.random() * operations.length)];
+
+		let answer;
+		let question;
+
+		switch (operation) {
+			case '+':
+				answer = num1 + num2;
+				question = `${num1} + ${num2}`;
+				break;
+			case '-':
+				answer = num1 - num2;
+				question = `${num1} - ${num2}`;
+				break;
+		}
+
+		setCaptchaQuestion({ question, answer });
+	};
+
+	// Generuj captcha przy pierwszym załadowaniu
+	useEffect(() => {
+		generateCaptcha();
+	}, []);
+
+	// Ukryj alert po 5 sekundach
+	useEffect(() => {
+		if (alert) {
+			const timer = setTimeout(() => {
+				setAlert(null);
+			}, 5000);
+			return () => clearTimeout(timer);
+		}
+	}, [alert]);
+
+	const showAlert = (type, message) => {
+		setAlert({ type, message });
+	};
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -22,27 +68,85 @@ export default function Contact() {
 		}));
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// Tutaj będzie logika wysyłania formularza
-		console.log('Formularz wysłany:', formData);
-		// W rzeczywistej aplikacji tutaj byłoby wysłanie danych do API
+		setIsLoading(true);
 
-		// Reset formularza po wysłaniu
-		setFormData({
-			name: '',
-			email: '',
-			topic: 'Wiadomość ze strony Big Business Meets Science',
-			message: '',
-		});
+		// Sprawdź captcha
+		if (parseInt(formData.captcha) !== captchaQuestion.answer) {
+			showAlert('error', 'Nieprawidłowa odpowiedź na pytanie anty-spam!');
+			setIsLoading(false);
+			generateCaptcha(); // Nowe pytanie
+			setFormData((prev) => ({ ...prev, captcha: '' }));
+			return;
+		}
 
-		// Komunikat o sukcesie
-		alert('Wiadomość została wysłana!');
+		try {
+			// XAMPP - localhost (dla testów)
+			// const response = await fetch('http://localhost/send-email.php', {
+			// PRODUKCJA: /send-email.php
+			const response = await fetch('/api/send-email.php', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					name: formData.name,
+					email: formData.email,
+					message: formData.message,
+				}),
+			});
+
+			const responseText = await response.text();
+			console.log('PHP Response:', responseText);
+
+			let data;
+			try {
+				data = JSON.parse(responseText);
+			} catch (e) {
+				throw new Error('Serwer zwrócił nieprawidłową odpowiedź');
+			}
+
+			if (data.success) {
+				// Wyczyść formularz
+				setFormData({
+					name: '',
+					email: '',
+					message: '',
+					captcha: '',
+				});
+				generateCaptcha(); // Nowe pytanie captcha
+				showAlert('success', data.message);
+			} else {
+				showAlert('error', data.message);
+			}
+		} catch (error) {
+			console.error('Błąd:', error);
+			showAlert('error', 'Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
+		} finally {
+			setIsLoading(false);
+		}
 	};
 
+	// Oblicz className dla alert
+	const alertClassName = alert ? `${styles.alert} ${styles[`alert--${alert.type}`]}` : '';
+
 	return (
-		<section className={styles.contact}>
+		<section className={styles.contact} id='kontakt'>
 			<SectionHeader title='Kontakt' subtitle='Masz pytania dotyczące konferencji? Skontaktuj się z nami!' />
+
+			{/* Custom Alert */}
+			{alert && (
+				<div className={alertClassName}>
+					<div className={styles.alert__content}>
+						{alert.type === 'success' ? <FaCheckCircle className={styles.alert__icon} /> : <FaExclamationTriangle className={styles.alert__icon} />}
+						<span className={styles.alert__message}>{alert.message}</span>
+						<button className={styles.alert__close} onClick={() => setAlert(null)}>
+							×
+						</button>
+					</div>
+				</div>
+			)}
 
 			<div className={styles.contact__container}>
 				<div className={styles.contact__info}>
@@ -115,19 +219,6 @@ export default function Contact() {
 						/>
 					</div>
 
-					{/* <div className={styles.form__group}>
-						<input
-							type='text'
-							id='topic'
-							name='topic'
-							placeholder='Temat'
-							className={styles.form__input}
-							value={formData.topic}
-							onChange={handleChange}
-							required
-						/>
-					</div> */}
-
 					<div className={styles.form__group}>
 						<textarea
 							id='message'
@@ -140,8 +231,23 @@ export default function Contact() {
 						></textarea>
 					</div>
 
-					<button type='submit' className={styles.form__button}>
-						WYŚLIJ WIADOMOŚĆ
+					{/* Captcha */}
+					<div className={styles.form__group}>
+						<label className={styles.captcha__label}>Pytanie anty-spam: Ile to {captchaQuestion.question}?</label>
+						<input
+							type='number'
+							id='captcha'
+							name='captcha'
+							placeholder='Twoja odpowiedź...'
+							className={styles.form__input}
+							value={formData.captcha}
+							onChange={handleChange}
+							required
+						/>
+					</div>
+
+					<button type='submit' className={styles.form__button} disabled={isLoading}>
+						{isLoading ? 'WYSYŁANIE...' : 'WYŚLIJ WIADOMOŚĆ'}
 					</button>
 				</form>
 			</div>

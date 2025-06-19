@@ -1,4 +1,3 @@
-// CountdownSection.jsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -7,6 +6,7 @@ import styles from './Countdown.module.scss';
 export default function Countdown() {
 	const [hasMounted, setHasMounted] = useState(false);
 	const [timeLeft, setTimeLeft] = useState({ dni: 0, godzin: 0, minut: 0, sekund: 0 });
+	const [isFinished, setIsFinished] = useState(false);
 
 	useEffect(() => {
 		setHasMounted(true);
@@ -14,9 +14,17 @@ export default function Countdown() {
 
 	useEffect(() => {
 		const timer = setInterval(() => {
-			const targetDate = new Date('2025-09-17T17:00:00');
+			const targetDate = new Date('2025-09-17T11:00:00');
 			const now = new Date();
 			const diff = targetDate.getTime() - now.getTime();
+
+			// Jeśli czas się skończył, zatrzymaj na zerach
+			if (diff <= 0) {
+				setTimeLeft({ dni: 0, godzin: 0, minut: 0, sekund: 0 });
+				setIsFinished(true);
+				clearInterval(timer);
+				return;
+			}
 
 			setTimeLeft({
 				dni: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -25,6 +33,7 @@ export default function Countdown() {
 				sekund: Math.floor((diff / 1000) % 60),
 			});
 		}, 1000);
+
 		return () => clearInterval(timer);
 	}, []);
 
@@ -32,7 +41,7 @@ export default function Countdown() {
 
 	return (
 		<section className={styles.countdown}>
-			<h2>KONFERENCJA ROZPOCZNIE SIĘ ZA</h2>
+			<h2>{isFinished ? 'KONFERENCJA ROZPOCZĘTA!' : 'KONFERENCJA ROZPOCZNIE SIĘ ZA'}</h2>
 			<div className={styles.countdown__grid}>
 				{Object.entries(timeLeft).map(([label, value]) => (
 					<div key={label} className={styles.countdown__item}>

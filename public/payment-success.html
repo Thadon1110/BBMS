@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Płatność zakończona - Big Business Meets Science 5</title>
+		<meta name="description" content="Potwierdzenie płatności za bilet na konferencję Big Business Meets Science 5" />
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				background: linear-gradient(135deg, #1a1a2e, #16213e);
+				color: #ffffff;
+				min-height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 20px;
+			}
+
+			.container {
+				background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+				backdrop-filter: blur(10px);
+				border-radius: 20px;
+				padding: 40px;
+				max-width: 700px;
+				width: 100%;
+				text-align: center;
+				box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+			}
+
+			.success-icon {
+				font-size: 5rem;
+				margin-bottom: 20px;
+				animation: bounceIn 0.6s ease-out;
+			}
+
+			.loading-icon {
+				font-size: 3rem;
+				color: #f59e0b;
+				margin-bottom: 20px;
+				animation: spin 1s linear infinite;
+			}
+
+			.error-icon {
+				font-size: 4rem;
+				color: #ef4444;
+				margin-bottom: 20px;
+			}
+
+			@keyframes spin {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+
+			@keyframes bounceIn {
+				0% {
+					transform: scale(0.3);
+					opacity: 0;
+				}
+				50% {
+					transform: scale(1.05);
+				}
+				70% {
+					transform: scale(0.9);
+				}
+				100% {
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+
+			h1 {
+				font-size: 2.5rem;
+				margin-bottom: 15px;
+				color: #ffffff;
+			}
+
+			.subtitle {
+				font-size: 1.2rem;
+				color: #d1d5db;
+				margin-bottom: 30px;
+			}
+
+			.order-details {
+				background: rgba(0, 0, 0, 0.2);
+				border-radius: 15px;
+				padding: 25px;
+				margin: 30px 0;
+				text-align: left;
+				border: 1px solid rgba(255, 255, 255, 0.1);
+			}
+
+			.order-details h3 {
+				color: #10b981;
+				margin-bottom: 15px;
+				text-align: center;
+				font-size: 1.3rem;
+			}
+
+			.detail-row {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 12px;
+				padding: 10px 0;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+			}
+
+			.detail-row:last-child {
+				border-bottom: none;
+				font-weight: bold;
+				font-size: 1.1rem;
+				color: #10b981;
+			}
+
+			.detail-label {
+				color: #d1d5db;
+			}
+
+			.detail-value {
+				color: #ffffff;
+				font-weight: 500;
+			}
+
+			.buttons {
+				display: flex;
+				gap: 15px;
+				justify-content: center;
+				flex-wrap: wrap;
+				margin-top: 30px;
+			}
+
+			.btn {
+				padding: 14px 28px;
+				border-radius: 10px;
+				text-decoration: none;
+				font-weight: 600;
+				transition: all 0.3s;
+				border: none;
+				cursor: pointer;
+				font-size: 1rem;
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+			}
+
+			.btn-primary {
+				background: linear-gradient(135deg, #10b981, #059669);
+				color: white;
+				box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+			}
+
+			.btn-primary:hover {
+				background: linear-gradient(135deg, #059669, #047857);
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+			}
+
+			.btn-secondary {
+				background: transparent;
+				color: #d1d5db;
+				border: 2px solid #d1d5db;
+			}
+
+			.btn-secondary:hover {
+				background: rgba(255, 255, 255, 0.1);
+				color: white;
+				border-color: white;
+				transform: translateY(-2px);
+			}
+
+			.info-box {
+				background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1));
+				border-left: 4px solid #3b82f6;
+				padding: 20px;
+				margin: 25px 0;
+				border-radius: 10px;
+				text-align: left;
+			}
+
+			.info-box h4 {
+				color: #60a5fa;
+				margin-bottom: 10px;
+				font-size: 1.1rem;
+			}
+
+			.info-box p {
+				margin: 0;
+				color: #e5e7eb;
+				line-height: 1.5;
+			}
+
+			.conference-info {
+				background: rgba(16, 185, 129, 0.1);
+				border: 1px solid rgba(16, 185, 129, 0.3);
+				border-radius: 15px;
+				padding: 20px;
+				margin: 20px 0;
+			}
+
+			.conference-info h4 {
+				color: #10b981;
+				margin-bottom: 15px;
+				font-size: 1.2rem;
+			}
+
+			.conference-detail {
+				display: flex;
+				align-items: center;
+				margin: 8px 0;
+				color: #d1d5db;
+			}
+
+			.conference-detail .icon {
+				margin-right: 10px;
+				font-size: 1.1rem;
+				color: #10b981;
+				width: 20px;
+			}
+
+			.loading-dots {
+				display: inline-block;
+				position: relative;
+				width: 80px;
+				height: 10px;
+			}
+
+			.loading-dots div {
+				position: absolute;
+				top: 0;
+				width: 13px;
+				height: 13px;
+				border-radius: 50%;
+				background: #f59e0b;
+				animation: loading-dots 1.2s linear infinite;
+			}
+
+			.loading-dots div:nth-child(1) {
+				left: 8px;
+				animation-delay: 0s;
+			}
+			.loading-dots div:nth-child(2) {
+				left: 32px;
+				animation-delay: -0.4s;
+			}
+			.loading-dots div:nth-child(3) {
+				left: 56px;
+				animation-delay: -0.8s;
+			}
+
+			@keyframes loading-dots {
+				0%,
+				80%,
+				100% {
+					transform: scale(0);
+				}
+				40% {
+					transform: scale(1);
+				}
+			}
+
+			@media (max-width: 600px) {
+				.container {
+					padding: 30px 20px;
+				}
+
+				h1 {
+					font-size: 2rem;
+				}
+
+				.buttons {
+					flex-direction: column;
+				}
+
+				.btn {
+					width: 100%;
+					justify-content: center;
+				}
+
+				.detail-row {
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 5px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<!-- Stan ładowania -->
+			<div id="loading-state">
+				<div class="loading-icon">⚙️</div>
+				<h1>Sprawdzamy status płatności</h1>
+				<p class="subtitle">Proszę czekać, weryfikujemy Twoją płatność...</p>
+				<div class="loading-dots">
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+
+			<!-- Stan sukcesu -->
+			<div id="success-state" style="display: none">
+				<div class="success-icon">✅</div>
+				<h1>Płatność zakończona pomyślnie!</h1>
+				<p class="subtitle">Dziękujemy za zakup biletu na konferencję</p>
+
+				<div class="order-details">
+					<h3>📋 Szczegóły zamówienia</h3>
+					<div class="detail-row">
+						<span class="detail-label">Numer zamówienia:</span>
+						<span class="detail-value" id="order-id">-</span>
+					</div>
+					<div class="detail-row">
+						<span class="detail-label">Bilet:</span>
+						<span class="detail-value" id="ticket-name">-</span>
+					</div>
+					<div class="detail-row">
+						<span class="detail-label">Ilość:</span>
+						<span class="detail-value" id="ticket-quantity">-</span>
+					</div>
+					<div class="detail-row">
+						<span class="detail-label">Status:</span>
+						<span class="detail-value">OPŁACONE</span>
+					</div>
+				</div>
+
+				<div class="conference-info">
+					<h4>📅 Informacje o konferencji</h4>
+					<div class="conference-detail">
+						<span class="icon">📅</span>
+						<span>17 września 2025</span>
+					</div>
+					<div class="conference-detail">
+						<span class="icon">🕐</span>
+						<span>11:00 - 22:00</span>
+					</div>
+					<div class="conference-detail">
+						<span class="icon">📍</span>
+						<span>Hotel Villa Verde, ul. Hotelowa 12, Zawiercie</span>
+					</div>
+				</div>
+
+				<div class="info-box">
+					<h4>📧 Co dalej?</h4>
+					<p>
+						Na Twój email zostało wysłane szczegółowe potwierdzenie z wszystkimi informacjami. Zachowaj je jako dowód zakupu biletu - będzie potrzebny
+						podczas rejestracji na konferencji.
+					</p>
+				</div>
+
+				<div class="buttons">
+					<a href="/" class="btn btn-primary"> 🏠 Powrót na stronę główną </a>
+					<a href="https://www.google.com/maps/search/?api=1&query=Hotel+Villa+Verde+Zawiercie" class="btn btn-secondary" target="_blank">
+						📍 Zobacz lokalizację
+					</a>
+				</div>
+			</div>
+
+			<!-- Stan błędu -->
+			<div id="error-state" style="display: none">
+				<div class="error-icon">❌</div>
+				<h1>Wystąpił problem z płatnością</h1>
+				<p class="subtitle">Nie udało się potwierdzić Twojej płatności</p>
+
+				<div class="info-box">
+					<h4>🤔 Co się stało?</h4>
+					<p>
+						Możliwe przyczyny: płatność została anulowana, wystąpił błąd techniczny lub przekroczono limit czasu. Jeśli pieniądze zostały pobrane z
+						Twojego konta, skontaktuj się z nami - pomożemy rozwiązać problem.
+					</p>
+				</div>
+
+				<div class="buttons">
+					<a href="/" class="btn btn-primary"> 🔄 Spróbuj ponownie </a>
+					<a href="mailto:mfuz@trawialnia.eu" class="btn btn-secondary"> 📧 Skontaktuj się z nami </a>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			// Pobierz parametry z URL
+			const urlParams = new URLSearchParams(window.location.search);
+			const orderId = urlParams.get('order_id') || urlParams.get('p24_session_id');
+
+			console.log('Order ID from URL:', orderId);
+
+			if (orderId) {
+				// Sprawdź status zamówienia
+				checkOrderStatus(orderId);
+			} else {
+				console.error('No order ID found in URL');
+				showError();
+			}
+
+			async function checkOrderStatus(orderId) {
+				let attempts = 0;
+				const maxAttempts = 10; // Maksymalnie 10 prób (50 sekund)
+
+				async function attemptCheck() {
+					try {
+						console.log(`Checking order status, attempt ${attempts + 1}`);
+
+						const response = await fetch(`/api/payment-status.php?order_id=${orderId}`);
+
+						if (!response.ok) {
+							throw new Error(`HTTP ${response.status}`);
+						}
+
+						const data = await response.json();
+						console.log('Status response:', data);
+
+						if (data.success) {
+							if (data.status === 'confirmed') {
+								showSuccess(data, orderId);
+							} else if (data.status === 'pending' && attempts < maxAttempts) {
+								// Czekaj i sprawdź ponownie
+								attempts++;
+								setTimeout(attemptCheck, 5000); // Co 5 sekund
+							} else {
+								// Zbyt dużo prób lub status failed
+								showError();
+							}
+						} else {
+							if (attempts < maxAttempts) {
+								attempts++;
+								setTimeout(attemptCheck, 5000);
+							} else {
+								showError();
+							}
+						}
+					} catch (error) {
+						console.error('Error checking status:', error);
+
+						if (attempts < maxAttempts) {
+							attempts++;
+							setTimeout(attemptCheck, 5000);
+						} else {
+							showError();
+						}
+					}
+				}
+
+				attemptCheck();
+			}
+
+			function showSuccess(data, orderId) {
+				console.log('Showing success state');
+
+				document.getElementById('loading-state').style.display = 'none';
+				document.getElementById('error-state').style.display = 'none';
+				document.getElementById('success-state').style.display = 'block';
+
+				document.getElementById('order-id').textContent = orderId;
+
+				if (data.order_details) {
+					document.getElementById('ticket-name').textContent = data.order_details.ticket_name || '-';
+					document.getElementById('ticket-quantity').textContent = data.order_details.quantity || '-';
+				}
+			}
+
+			function showError() {
+				console.log('Showing error state');
+
+				document.getElementById('loading-state').style.display = 'none';
+				document.getElementById('success-state').style.display = 'none';
+				document.getElementById('error-state').style.display = 'block';
+			}
+
+			// Automatyczne przekierowanie po 5 minutach bezczynności
+			setTimeout(() => {
+				if (document.getElementById('loading-state').style.display !== 'none') {
+					showError();
+				}
+			}, 300000); // 5 minut
+		</script>
+	</body>
+</html>

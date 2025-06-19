@@ -5,7 +5,7 @@ import { FaInstagram, FaWikipediaW, FaLinkedinIn } from 'react-icons/fa6';
 
 export default function MainGuest() {
 	return (
-		<section className={styles.star}>
+		<section className={styles.star} id='gosc-glowny'>
 			<SectionHeader title='Gwiazdą Programu' subtitle='Poznaj naszą główną prelegentkę, która podzieli się unikalnymi doświadczeniami i wiedzą' />
 
 			<div className={styles.star__card}>

@@ -3,6 +3,7 @@
 
 .tickets {
 	padding: 80px 20px;
+	position: relative;
 
 	&__container {
 		display: flex;
@@ -54,7 +55,6 @@
 		width: 200px;
 		padding: 8px;
 		transform: rotate(45deg) translateX(60px) translateY(-40px);
-		// transform-origin: top right;
 		font-size: 1rem;
 		font-weight: 700;
 		text-align: center;
@@ -145,10 +145,17 @@
 		text-align: center;
 		border: none;
 		cursor: pointer;
-		transition: background-color 0.3s, transform 0.3s;
+		transition:
+			background-color 0.3s,
+			transform 0.3s;
 
-		&:hover {
+		&:hover:not(:disabled) {
 			transform: translateY(2px);
+		}
+
+		&:disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
 		}
 
 		&.button__standard {
@@ -156,7 +163,7 @@
 			background: transparent;
 			border: 2px solid $text;
 
-			&:hover {
+			&:hover:not(:disabled) {
 				background: rgba($text, 0.1);
 			}
 		}
@@ -165,10 +172,282 @@
 			color: $text;
 			background: $primary;
 
-			&:hover {
+			&:hover:not(:disabled) {
 				background: $primary-hover;
 			}
 		}
+	}
+}
+
+// Alert styles
+.alert {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 1001;
+	min-width: 300px;
+	max-width: 400px;
+	border-radius: 12px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+	animation: slideIn 0.3s ease-out;
+
+	&__content {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 16px 20px;
+	}
+
+	&__message {
+		flex: 1;
+		font-size: 0.95rem;
+		font-weight: 500;
+	}
+
+	&__close {
+		background: none;
+		border: none;
+		font-size: 1.5rem;
+		cursor: pointer;
+		padding: 0;
+		width: 24px;
+		height: 24px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		transition: background-color 0.2s;
+		color: inherit;
+
+		&:hover {
+			background-color: rgba(255, 255, 255, 0.2);
+		}
+	}
+
+	&--success {
+		background: linear-gradient(135deg, #10b981, #059669);
+		color: white;
+	}
+
+	&--error {
+		background: linear-gradient(135deg, #ef4444, #dc2626);
+		color: white;
+	}
+
+	@media (max-width: 576px) {
+		top: 10px;
+		right: 10px;
+		left: 10px;
+		min-width: auto;
+		max-width: none;
+
+		&__content {
+			padding: 14px 16px;
+		}
+
+		&__message {
+			font-size: 0.9rem;
+		}
+	}
+}
+
+@keyframes slideIn {
+	from {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+// Styles dla modala zakupu
+.purchase__overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.7);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+	padding: 20px;
+}
+
+.purchase__modal {
+	background: linear-gradient(145deg, $block-bg-first, $block-bg-second);
+	border-radius: 20px;
+	width: 100%;
+	max-width: 500px;
+	max-height: 90vh;
+	overflow-y: auto;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px 30px 20px;
+	border-bottom: 1px solid rgba($text, 0.1);
+
+	h3 {
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: $text;
+		margin: 0;
+	}
+
+	.modal__close {
+		background: none;
+		border: none;
+		font-size: 2rem;
+		color: $text-alternate;
+		cursor: pointer;
+		padding: 0;
+		width: 30px;
+		height: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		transition: all 0.3s;
+
+		&:hover {
+			background: rgba($text, 0.1);
+			color: $text;
+		}
+	}
+}
+
+.purchase__form {
+	padding: 20px 30px 30px;
+
+	.form__group {
+		margin-bottom: 20px;
+
+		label {
+			display: block;
+			margin-bottom: 8px;
+			font-size: 1rem;
+			font-weight: 600;
+			color: $text;
+		}
+
+		.form__input,
+		.form__select {
+			width: 100%;
+			padding: 12px 15px;
+			font-size: 1rem;
+			color: $text;
+			background-color: rgba($block-bg-first, 0.5);
+			border: 1px solid rgba($text, 0.2);
+			border-radius: 8px;
+			transition: border-color 0.3s;
+
+			&::placeholder {
+				color: rgba($text-alternate, 0.7);
+			}
+
+			&:focus {
+				outline: none;
+				border-color: $secondary;
+			}
+		}
+
+		.form__select {
+			cursor: pointer;
+		}
+	}
+}
+
+.purchase__summary {
+	background: rgba($block-bg-second, 0.5);
+	padding: 20px;
+	border-radius: 12px;
+	margin: 20px 0;
+
+	.summary__line {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 10px;
+		font-size: 1rem;
+		color: $text-alternate;
+	}
+
+	.summary__total {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-top: 10px;
+		border-top: 1px solid rgba($text, 0.1);
+		font-size: 1.2rem;
+		font-weight: 700;
+		color: $text;
+	}
+}
+
+.form__actions {
+	display: flex;
+	gap: 15px;
+	margin-top: 30px;
+
+	.btn__cancel,
+	.btn__purchase {
+		flex: 1;
+		padding: 12px 20px;
+		border-radius: 8px;
+		font-size: 1rem;
+		font-weight: 600;
+		border: none;
+		cursor: pointer;
+		transition: all 0.3s;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+
+		&:disabled {
+			opacity: 0.7;
+			cursor: not-allowed;
+		}
+	}
+
+	.btn__cancel {
+		background: transparent;
+		color: $text-alternate;
+		border: 1px solid rgba($text, 0.2);
+
+		&:hover:not(:disabled) {
+			background: rgba($text, 0.05);
+			color: $text;
+		}
+	}
+
+	.btn__purchase {
+		background: $secondary;
+		color: $text;
+
+		&:hover:not(:disabled) {
+			background: $secondary-hover;
+		}
+
+		.spinner {
+			animation: spin 1s linear infinite;
+		}
+	}
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
 	}
 }
 
@@ -211,6 +490,12 @@
 			font-size: 1.15rem;
 			padding: 12px 0;
 			width: 65%;
+		}
+	}
+
+	.modal__header {
+		h3 {
+			font-size: 1.7rem;
 		}
 	}
 }
@@ -264,5 +549,21 @@
 			padding: 14px 0;
 			width: 60%;
 		}
+	}
+
+	.purchase__modal {
+		max-width: 600px;
+	}
+
+	.modal__header {
+		padding: 40px 40px 25px;
+
+		h3 {
+			font-size: 1.8rem;
+		}
+	}
+
+	.purchase__form {
+		padding: 25px 40px 40px;
 	}
 }

@@ -56,21 +56,24 @@ export default function Footer() {
 						<div className={styles.nav__column}>
 							<h3 className={styles.nav__title}>Informacje</h3>
 							<ul className={styles.nav__list}>
-								<li>
+								{/* <li>
 									<Link href='/#o-konferencji'>O konferencji</Link>
+								</li> */}
+								<li>
+									<Link href='/#gosc-glowny'>Główny gość</Link>
 								</li>
 								<li>
-									<Link href='/#main-guest'>Główny gość</Link>
+									<Link href='/#prelegenci'>Nasi prelegenci</Link>
 								</li>
 								<li>
-									<Link href='/#speakers'>Nasi prelegenci</Link>
+									<Link href='/#glowna-wokalistka'>Główna wokalistka</Link>
 								</li>
 								<li>
-									<Link href='/#sponsors'>Nasi sponsorzy</Link>
+									<Link href='/#sponsorzy'>Nasi sponsorzy</Link>
 								</li>
-								<li>
+								{/* <li>
 									<Link href='/#kontakt'>Kontakt z nami</Link>
-								</li>
+								</li> */}
 							</ul>
 						</div>
 
@@ -78,13 +81,13 @@ export default function Footer() {
 							<h3 className={styles.nav__title}>Kontakt</h3>
 							<ul className={styles.nav__list}>
 								<li>
-									<a href='tel:+48123123123' className={styles.contact__link}>
-										+48 123 123 123
+									<a href='tel:+48668102874' className={styles.contact__link}>
+										+48 668 102 874
 									</a>
 								</li>
 								<li>
-									<a href='mailto:info@bbms.pl' className={styles.contact__link}>
-										info@bbms.pl
+									<a href='mailto:mfuz@trawialnia.eu' className={styles.contact__link}>
+										mfuz@trawialnia.eu
 									</a>
 								</li>
 							</ul>

@@ -62,7 +62,7 @@ export const agendaItems = [
 
 export default function Agenda() {
 	return (
-		<section className={styles.agenda}>
+		<section className={styles.agenda} id='agenda'>
 			<SectionHeader title='Program Konferencji' subtitle='Zaplanuj swój udział w najciekawszych wykładach i warsztatach' />
 
 			<div className={styles.agenda__container}>
