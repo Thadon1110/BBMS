@@ -89,11 +89,11 @@ export default function Home() {
 					</p>
 
 					<div className={styles.content__buttons}>
-						<a href='#' className={styles.buttons__ticket}>
+						<a href='#bilety' className={styles.buttons__ticket}>
 							<FaTicket /> Kup Bilet
 						</a>
 
-						<a href='#' className={styles.buttons__agenda}>
+						<a href='#agenda' className={styles.buttons__agenda}>
 							<FaCalendarCheck /> Zobacz Agendę
 						</a>
 					</div>
