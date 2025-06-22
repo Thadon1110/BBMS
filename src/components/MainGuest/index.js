@@ -46,7 +46,7 @@ export default function MainGuest() {
 						width={400}
 						height={400}
 						placeholder='blur'
-						blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=='
+						blurDataURL='data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACwAAAAAAQABAAACAkQBADs='
 					/>
 				</div>
 			</div>
