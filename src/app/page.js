@@ -19,22 +19,26 @@ export default function Home() {
 	const handleAddToCalendar = () => {
 		const eventDetails = {
 			title: 'BIG BUSINESS MEETS SCIENCE 5',
-			start: '2025-09-17T11:00:00',
-			end: '2025-09-17T22:00:00',
-			location: 'Hotel Villa Verde, Zawiercie',
+			start: '2025-10-02T11:00:00Z',
+			end: '2025-10-02T22:00:00Z',
+			location: 'Hotel Natura Residence Business & SPA/ul. Sucha 4 42-470 Siewierz',
 			description:
 				'Dołącz do wyjątkowej konferencji łączącej świat biznesu i nauki – inspirujące prelekcje, networking i wiedza na najwyższym poziomie.',
 		};
 
 		// Google Calendar URL
-		const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${eventDetails.start.replace(/[-:]/g, '').replace('T', 'T')}Z/${eventDetails.end.replace(/[-:]/g, '').replace('T', 'T')}Z&location=${encodeURIComponent(eventDetails.location)}&details=${encodeURIComponent(eventDetails.description)}`;
+		const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+			eventDetails.title
+		)}&dates=${eventDetails.start.replace(/[-:]/g, '').replace('T', 'T')}Z/${eventDetails.end
+			.replace(/[-:]/g, '')
+			.replace('T', 'T')}Z&location=${encodeURIComponent(eventDetails.location)}&details=${encodeURIComponent(eventDetails.description)}`;
 
 		// Otwórz Google Calendar
 		window.open(googleCalendarUrl, '_blank');
 	};
 
 	const handleOpenLocation = () => {
-		const location = 'Hotel Villa Verde, Zawiercie';
+		const location = 'Hotel Natura Residence Business & SPA';
 		const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`;
 
 		// Otwórz Google Maps
@@ -61,7 +65,7 @@ export default function Home() {
 								}
 							}}
 						>
-							<FaCalendarDays /> <time dateTime='2025-09-17'>17 Września 2025</time>
+							<FaCalendarDays /> <time dateTime='2025-10-02'>2 Października 2025</time>
 						</p>
 
 						<p
@@ -76,7 +80,7 @@ export default function Home() {
 								}
 							}}
 						>
-							<FaLocationDot /> Hotel Villa Verde, Zawiercie
+							<FaLocationDot /> Hotel Natura Residence Business & SPA
 						</p>
 					</div>
 

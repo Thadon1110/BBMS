@@ -168,9 +168,9 @@ export default function Contact() {
 						<li className={styles.info__item}>
 							<FaMapMarkerAlt className={styles.info__icon} />
 							<address className={styles.info__address}>
-								Hotel Villa Verde, ul. Hotelowa 12,
+								Hotel Natura Residence Business & SPA, ul. Sucha 4
 								<br />
-								42-400 Zawiercie
+								42-470 Siewierz
 							</address>
 						</li>
 					</ul>
