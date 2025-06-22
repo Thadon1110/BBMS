@@ -126,7 +126,7 @@ export default function Speakers() {
 								width={500}
 								height={500}
 								placeholder='blur'
-								blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=='
+								blurDataURL='data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACwAAAAAAQABAAACAkQBADs='
 							/>
 							{/* <a href={speaker.linkedin} className={styles.linkedin__icon} target='_blank' rel='noopener noreferrer'>
 								<FaLinkedinIn />
